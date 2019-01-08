@@ -4,3 +4,4 @@
     - name: get packages
       yum:
         list: updates
+      register: updates

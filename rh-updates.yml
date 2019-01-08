@@ -1,0 +1,6 @@
+- name: Update RHEL hosts
+  tasks:
+    - name: Update packages
+      yum:
+        name: '*'
+        state: latest

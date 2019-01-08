@@ -5,3 +5,5 @@
       yum:
         list: updates
       register: updates
+    - debug:
+        var: updates

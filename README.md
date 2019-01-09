@@ -14,6 +14,7 @@ Serves as a basic Ansible Tower demo repo.
 ### Demo
 
 1. Prepare the demo by adding the AWS credentials and an ssh key for host access beforehand.
+    1. Walk through adding AWS creds
 2. Create a Project for the demo.
     1. Enter `https://github.com/CorwinBurton/tower-demos` for the Git SCM URL
     2. Check all three cleanup boxes and hit save
@@ -32,5 +33,5 @@ Serves as a basic Ansible Tower demo repo.
     3. Select the ssh credential already set up
     4. Enable privilege escalation
     5. Launch the job to show a list of updates
-5. Repeat showing the update playbook for just tag_DEV
+5. Repeat showing the update playbook for just tag_DEV, etc
     1. Limit to tag_DEV

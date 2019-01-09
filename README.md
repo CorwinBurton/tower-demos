@@ -1,5 +1,5 @@
 # tower-demos
-Serves as a basic Ansible Tower demo repo.
+Serves as a basic Ansible Tower demo repo. The backend uses https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py to dynamically update the inventory.
 
 ## Demo Steps
 

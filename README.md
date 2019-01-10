@@ -35,3 +35,8 @@ Serves as a basic Ansible Tower demo repo.
     5. Launch the job to show a list of updates
 5. Repeat showing the update playbook for just tag_DEV, etc
     1. Limit to tag_DEV
+
+## Resources
+- [Ansible EC2 Dynamic Inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-aws-ec2)
+- [Ansible Yum Module](https://docs.ansible.com/ansible/latest/modules/yum_module.html)
+- [Ansible Subscription-Manager Module](https://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html)

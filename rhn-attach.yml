@@ -1,0 +1,10 @@
+---
+- name: Attach RHEL host
+  hosts: all
+  tasks:
+    - name: Register host
+    redhat_subscription:
+      state: present
+      username: "{{ rhn_username }}"
+      password: "{{ rhn_password }}"
+      pool_ids: "{{ rhn_pool_id }}"

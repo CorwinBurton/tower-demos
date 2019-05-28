@@ -17,7 +17,7 @@
         state: present
     - name: Open port 80 for http access
       firewalld:
-        port: 80
+        port: 80/tcp
         permanent: true
         state: enabled
         immediate: true

@@ -11,6 +11,10 @@
       service:
         name: httpd 
         state: started
+    - name: make sure firewalld python package is installed
+      yum:
+        name: python-firewall
+        state: present
     - name: Open port 80 for http access
       firewalld:
         zone: public

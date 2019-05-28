@@ -17,10 +17,10 @@
         state: present
     - name: Open port 80 for http access
       firewalld:
-        zone: public
-        service: http
-        permanent: yes
+        port: 80
+        permanent: true
         state: enabled
+        immediate: true
     - name: Restart the firewalld service to load in the firewall changes
       service: 
         name: firewalld 

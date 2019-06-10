@@ -1,0 +1,17 @@
+- name: RHEL 8 Post Deployment
+  hosts: all
+  tasks:
+    - name: enable satellite tools repo
+      rhsm_repository:
+        name: satellite-tools-6.5-for-rhel-8-x86_64-rpms
+        state: enabled
+    - name: install katello-tools
+      yum:
+        name: katello-tools
+        state: present
+    - name: enable goferd
+      systemd:
+        name: goferd
+        state: started
+        enabled: yes
+

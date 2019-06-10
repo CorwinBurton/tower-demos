@@ -7,7 +7,7 @@
         state: enabled
     - name: install katello-tools
       yum:
-        name: katello-tools
+        name: katello-agent
         state: present
     - name: enable goferd
       systemd:

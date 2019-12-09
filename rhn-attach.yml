@@ -9,3 +9,4 @@
         username: "{{ rhn_username }}"
         password: "{{ rhn_password }}"
         pool_ids: "{{ rhn_pool_id }}"
+        server_hostname: "{{ ansible_facts.fqdn }}"

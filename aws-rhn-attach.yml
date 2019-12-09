@@ -1,0 +1,25 @@
+---
+- name: Attach RHEL host
+  hosts: all
+
+  tasks:
+    - name: find existing repos
+      find:
+        paths: /etc/yum.repos.d/
+        patterns: "^redhat-rhui*"
+        use_regex: true
+      register: rhui_repos
+    - name: print repos
+      debug:
+        var: rhui_repos
+    - name: clean existing repos
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{rhui_repos.files}}"
+    - name: Register host
+      redhat_subscription:
+        state: present
+        username: "{{ rhn_username }}"
+        password: "{{ rhn_password }}"
+        pool_ids: "{{ rhn_pool_id }}"

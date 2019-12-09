@@ -1,6 +1,7 @@
 ---
 - name: Attach RHEL host
   hosts: all
+  become: true
   tasks:
     - name: Register host
       redhat_subscription:

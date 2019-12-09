@@ -1,5 +1,6 @@
 - name: Update RHEL hosts
   hosts: all
+  become: true
   tasks:
     - name: Update packages
       yum:

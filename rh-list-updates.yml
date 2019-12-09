@@ -1,5 +1,6 @@
 - name: List Updates
   hosts: all
+  become: true
   tasks:
     - name: get packages
       yum:

@@ -40,8 +40,8 @@ Serves as a basic Ansible Tower demo repo.
 1. Create EC2 instances with the correct tag
 2. Sync the inventory
 3. Run the bootstrap playbook to install python
-4. Run to attach the RHEL instance
-5. Deploy an app
+4. Run to attach the RHEL instance (may need to remove existing AWS repos if using an Amazon AMI)
+5. Deploy httpd with sample web page
 
 ## Resources
 - [Ansible EC2 Dynamic Inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-aws-ec2)

@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: False
+  become: true
+
+  tasks:
+    - name: Check for Python
+      raw: rpm -qa {{python_version}}
+      changed_when: false
+      register: python_check
+
+    - name: print python check output
+      debug:
+        var: python_check
+
+    - name: Install Python
+      raw: yum -y install {{python_version}}
+      when: python_check.stdout.find(python_version) == -1

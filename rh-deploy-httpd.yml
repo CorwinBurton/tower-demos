@@ -1,7 +1,6 @@
 ---
 - name: Deploy Apache HTTPD
   hosts: all
-  become: true
   
   tasks:
     - name: ensure httpd and firewalld are installed

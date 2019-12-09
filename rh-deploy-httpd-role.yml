@@ -1,7 +1,6 @@
 ---
 - name: Deploy httpd and a sample site
   hosts: all
-  become: true
 
   roles:
     - rhel.httpd

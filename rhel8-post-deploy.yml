@@ -1,6 +1,6 @@
 - name: RHEL 8 Post Deployment
   hosts: all
-  become: true
+
   tasks:
     - name: enable satellite tools repo
       rhsm_repository:

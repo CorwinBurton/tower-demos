@@ -1,0 +1,6 @@
+---
+# handlers file for rhel.httpd
+- name: restart httpd
+  service:
+    name: httpd
+    state: restarted

@@ -1,0 +1,33 @@
+---
+- name: Deploy Apache HTTPD
+  hosts: all
+  become: true
+  
+  tasks:
+    - name: ensure httpd and firewalld are installed
+      dnf:
+        name:
+          - httpd
+          - firewalld
+        state: latest
+    
+    - name: ensure httpd and firewalld are enabled
+      service: 
+        name: "{{item}}"
+        enabled: true
+        state: started
+      loop:
+        - httpd
+        - firewalld
+    
+    - name: firewalld is configured
+      firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
+    
+    - name: ensure sample index.html is installed
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html

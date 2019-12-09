@@ -11,7 +11,7 @@ Serves as a basic Ansible Tower demo repo.
 4. If the environment has more than 50 hosts, tag all of them for just the demo to avoid Tower licensing issues e.g. `tower-demo`
 
 
-### Demo
+### Demo1
 
 1. Prepare the demo by adding the AWS credentials and an ssh key for host access beforehand.
     1. Walk through adding AWS creds
@@ -35,6 +35,13 @@ Serves as a basic Ansible Tower demo repo.
     5. Launch the job to show a list of updates
 5. Repeat showing the update playbook for just tag_DEV, etc
     1. Limit to tag_DEV
+
+### Demo2
+1. Create EC2 instances with the correct tag
+2. Sync the inventory
+3. Run the bootstrap playbook to install python
+4. Run to attach the RHEL instance
+5. Deploy an app
 
 ## Resources
 - [Ansible EC2 Dynamic Inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-aws-ec2)

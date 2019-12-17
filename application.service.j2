@@ -1,0 +1,10 @@
+[Unit]
+Description={{application_name}} Service
+
+[Service]
+User=root
+WorkingDirectory=/opt/{{application_name}}/
+ExecStart=/usr/bin/java -Xmx256m -jar {{application_name}}.jar
+
+[Install]
+WantedBy=multi-user.target

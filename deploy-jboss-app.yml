@@ -1,0 +1,25 @@
+---
+- name: Deploy JBoss app from Repo
+  hosts: all
+  
+  tasks: # Deploy app
+    - name: Create directory
+      file:
+        path: "/opt/{{application_name}}"
+        state: directory
+    - name: Download application
+      get_url:
+        url: "{{nexus_url}}"
+        dest: "/opt/{{application_name}}"
+        backup: yes
+        force: yes
+    - name: Configure application
+      template: 
+        src: application.properties.j2
+        dest: "/opt/{{application_name}}/{{application_name}}.properties"
+    - name: Configure systemd unit
+      template:
+        src: application.service.j2
+        dest: "/etc/systemd/system/{{application_name}}.service"
+      notify: restart application # calls the handler
+...

@@ -1,6 +1,6 @@
 ---
 - name: ensure windows host is configured
-  hosts: windows
+  hosts: all
 
   tasks:
     - name: Upgrade chocolatey packages

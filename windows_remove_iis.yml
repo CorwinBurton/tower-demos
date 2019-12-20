@@ -1,0 +1,14 @@
+---
+- name: Install and configure IIS
+  hosts: all
+
+  tasks:
+    - name: Install IIS Web-Server with sub features and management tools
+      win_feature:
+        name: Web-Server
+        state: absent
+      register: win_feature
+
+    - name: Reboot if installing Web-Server feature requires it
+      win_reboot:
+      when: win_feature.reboot_required

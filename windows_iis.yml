@@ -11,10 +11,6 @@
         include_management_tools: no
       register: win_feature
 
-    - name: Reboot if installing Web-Server feature requires it
-      win_reboot:
-      when: win_feature.reboot_required
-
     - name: copy index.html
       win_copy:
         src: index.html
@@ -30,3 +26,7 @@
         direction: In
         protocol: Tcp
         force: true
+
+    - name: Reboot if installing Web-Server feature requires it
+      win_reboot:
+      when: win_feature.reboot_required

@@ -8,6 +8,6 @@
         state: present
         server_hostname: "{{ satellite_hostname }}"
         server_insecure: true
-        activation_key: "{{ satellite_activation_key }}"
+        activationkey: "{{ satellite_activation_key }}"
         org_id: "{{ satellite_org_id }}"
         auto_attach: true

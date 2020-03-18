@@ -25,7 +25,6 @@
         action: Allow
         direction: In
         protocol: Tcp
-        force: true
 
     - name: Reboot if installing Web-Server feature requires it
       win_reboot:

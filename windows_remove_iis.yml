@@ -13,7 +13,6 @@
       win_firewall_rule:
         name: mysite
         state: absent
-        force: true
         
     - name: Reboot if installing Web-Server feature requires it
       win_reboot:

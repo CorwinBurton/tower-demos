@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: Register and attach with an activation key
+      redhat_subscription:
+        state: present
+        server_hostname: "{{ satellite_hostname }}"
+        server_insecure: true
+        activation_key: "{{ satelite_activation_key }}"
+        org_id: "{{ satellite_org_id }}"
+        auto_attach: true

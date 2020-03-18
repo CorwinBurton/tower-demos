@@ -3,6 +3,12 @@
   gather_facts: False
 
   tasks:
+    - name: Install Katello package
+      yum:
+        name: "{{ katello_rpm_url }}"
+        state: present
+        validate_certs: no
+        
     - name: Register and attach with an activation key
       redhat_subscription:
         state: present

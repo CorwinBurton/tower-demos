@@ -29,6 +29,8 @@
       azure_rm_virtualmachine:
         vm_size: "{{ my_vm_size }}"
         location: "{{ my_location }}"
+    #    network_interfaces: "{{ myNIC }}"
+        open_ports: 22
         resource_group: "{{ myresourcegroup }}"
         name: "{{ vm_name }}"
         admin_username: "{{ admin_username }}"

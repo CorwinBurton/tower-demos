@@ -1,11 +1,12 @@
 ---
 - hosts: all
+  gather_facts: false
 
   tasks:
     - name: Create VM with defaults
       azure_rm_virtualmachine:
         resource_group: "{{ myresourcegroup }}"
-        name: testvm10
+        name: "{{ vm_name }}"
         admin_username: "{{ admin_username }}"
         admin_password: "{{ ssh_pub_key }}"
         tags:

@@ -3,6 +3,27 @@
   gather_facts: false
 
   tasks:
+    - name: Create Network Security Group that allows SSH
+      azure_rm_securitygroup:
+        resource_group: "{{ myresourcegroup }}"
+        name: "{{ myNetworkSecurityGroup }}"
+        rules:
+          - name: SSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Allow
+            priority: 1001
+            direction: Inbound
+            
+    - name: Create virtual network interface card
+      azure_rm_networkinterface:
+        resource_group: "{{ myresourcegroup }}"
+        name: "{{ myNIC }}"
+        virtual_network: "{{ myVnet }}"
+        subnet: "{{ mySubnet }}"
+        public_ip_name: "{{ myPublicIP }}"
+        security_group: "{{ myNetworkSecurityGroup }}"      
+            
     - name: Create VM with defaults
       delegate_to: localhost
       azure_rm_virtualmachine:

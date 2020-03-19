@@ -11,7 +11,7 @@
         admin_username: "{{ admin_username }}"
         admin_password: "{{ ssh_pub_key }}"
         tags:
-          worker:
+          worker: ""
         image:
           offer: RHEL
           publisher: RedHat

@@ -11,6 +11,7 @@
         resource_group: "{{ myresourcegroup }}"
         name: "{{ vm_name }}"
         admin_username: "{{ admin_username }}"
+        ssh_password_enabled: false
         ssh_public_keys: 
           - path: "/home/{{ admin_username }}/.ssh/authorized_keys"
             key_data: "{{ ssh_pub_key }}"

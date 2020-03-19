@@ -5,6 +5,7 @@
   tasks:
     - name: Create VM with defaults
       azure_rm_virtualmachine:
+        delegate_to: localhost
         resource_group: "{{ myresourcegroup }}"
         name: "{{ vm_name }}"
         admin_username: "{{ admin_username }}"

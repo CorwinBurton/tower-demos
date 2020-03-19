@@ -12,8 +12,8 @@
         name: "{{ vm_name }}"
         admin_username: "{{ admin_username }}"
         ssh_public_keys: 
-          key_path: "/home/{{ admin_username }}/.ssh/authorized_keys"
-          key_data: "{{ ssh_pub_key }}"
+          - path: "/home/{{ admin_username }}/.ssh/authorized_keys"
+            key_data: "{{ ssh_pub_key }}"
         tags:
           worker: ""
         image:

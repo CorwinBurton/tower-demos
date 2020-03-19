@@ -6,6 +6,7 @@
     - name: Create VM with defaults
       delegate_to: localhost
       azure_rm_virtualmachine:
+        vm_size: "{{ my_vm_size }}"
         resource_group: "{{ myresourcegroup }}"
         name: "{{ vm_name }}"
         admin_username: "{{ admin_username }}"

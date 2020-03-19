@@ -2,4 +2,29 @@
 - hosts: all
 
   tasks:
-    
+    - name: Create VM with defaults
+      azure_rm_virtualmachine:
+        resource_group: "{{ myresourcegroup }}"
+        name: testvm10
+        admin_username: "{{ admin_username }}"
+        admin_password: "{{ ssh_pub_key }}"
+        image:
+          offer: RHEL
+          publisher: RedHat
+          sku: '8.1'
+          version: latest
+
+    - name: Install Katello package
+      yum:
+        name: "{{ katello_rpm_url }}"
+        state: present
+        validate_certs: no
+        
+    - name: Register and attach with an activation key
+      redhat_subscription:
+        state: present
+        server_hostname: "{{ satellite_hostname }}"
+        server_insecure: true
+        activationkey: "{{ satellite_activation_key }}"
+        org_id: "{{ satellite_org_id }}"
+        auto_attach: true

@@ -3,7 +3,7 @@
 
   tasks:
     - name: get packages
-      dnf:
+      yum:
         list: updates
       register: updates
     - debug:

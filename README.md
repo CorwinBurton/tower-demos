@@ -1,6 +1,24 @@
 # tower-demos
 Serves as a basic Ansible Tower demo repo.
 
+## Folder Structure
+```
+├── inventories/
+│   ├── prod/
+│   │   ├── group_vars/
+│   │   ├── host_vars/
+│   │   └── inventory/
+│   └── stage/
+│       ├── group_vars/
+│       ├── host_vars/
+│       └── inventory/
+├── roles/
+│   └── role.name/
+├── playbooks/
+|   └── playbook.yml
+└── site.yml
+```
+
 ## Demo Steps
 
 ### AWS Preparation
@@ -44,6 +62,6 @@ Serves as a basic Ansible Tower demo repo.
 5. Deploy httpd with sample web page
 
 ## Resources
-- [Ansible EC2 Dynamic Inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-aws-ec2)
+- [Ansible EC2 Dynamic Inventory](https://docs.ansible.com/ansible/latest/plugins/inventory.html#inventory-plugins)
 - [Ansible Yum Module](https://docs.ansible.com/ansible/latest/modules/yum_module.html)
 - [Ansible Subscription-Manager Module](https://docs.ansible.com/ansible/latest/modules/redhat_subscription_module.html)

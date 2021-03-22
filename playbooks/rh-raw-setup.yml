@@ -3,15 +3,36 @@
   gather_facts: False
 
   tasks:
-    - name: Check for Python
-      raw: rpm -qa {{python_version}}
-      changed_when: false
-      register: python_check
+    - name: Ensure Python is installed and ready
+      block:
+        - name: Check for Python
+          raw: rpm -qa {{python_version}}
+          changed_when: false
+          register: python_check
 
-    - name: print python check output
-      debug:
-        var: python_check
+        - name: print python check output
+          debug:
+            var: python_check
 
-    - name: Install Python
-      raw: yum -y install {{python_version}}
-      when: python_check.stdout.find(python_version) == -1
+        - name: Install Python
+          raw: yum -y install {{python_version}}
+          when: python_check.stdout.find(python_version) == -1
+      tags:
+        - python-check
+    
+    - name: Ensure authorization is setup
+      block: 
+        - name: Ensure ansible user is present
+          user:
+            name: "{{ ansible_username }}"
+            shell: /bin/bash
+            groups: admin
+            append: yes
+        
+        - name: Ensure SSH key is installed
+          authorized_key:
+            user: "{{ ansible_username }}"
+            state: present
+            key: "{{ ssh_pub_key }}"
+      tags:
+        - user-setup

@@ -26,7 +26,7 @@
           user:
             name: "{{ ansible_username }}"
             shell: /bin/bash
-            groups: admin
+            groups: wheel
             append: yes
         
         - name: Ensure SSH key is installed
@@ -34,5 +34,13 @@
             user: "{{ ansible_username }}"
             state: present
             key: "{{ ssh_pub_key }}"
+
+        - name: Ensure ansible user can sudo
+          lineinfile:
+            dest: /etc/sudoers
+            state: present
+            regexp: '^%wheel'
+            line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+            validate: 'visudo -cf %s'
       tags:
         - user-setup

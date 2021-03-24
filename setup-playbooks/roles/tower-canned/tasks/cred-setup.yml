@@ -39,7 +39,8 @@
     credential_type: "Machine"
     inputs:
       username: "{{ my_default_user }}"
-      password: "{{ my_default_password }}"            
+      password: "{{ my_default_password }}"
+      become_password: "{{ my_default_password }}"         
 
 - name: Add RHEL SSH Key
   awx.awx.tower_credential:

@@ -7,6 +7,17 @@
     injectors: "{{ lookup('file', 'rh_access_portal_injector.json') }}"
     state: present
 
+- name: Add Subscription Creds
+  awx.awx.tower_credential_type:
+    name: "{{ my_subscription_creds }}"
+    description: RH Access Portal Credentials
+    organization: "Default"
+    state: present
+    inputs:
+      password: "{{ my_rh_password }}"
+      pool_id: "{{ my_pool_id }}"
+      username: "{{ my_rh_username }}"
+
 - name: Add GitHub Credentials
   awx.awx.tower_credential:
     name: "{{ my_git_creds }}"

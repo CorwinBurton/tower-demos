@@ -23,6 +23,9 @@ my_scm_inventory_url:
 my_mssql_password: 
 my_default_user: 
 my_default_password: 
+my_rh_password: 
+my_rh_username: 
+my_pool_id: 
 
 tower_key: 
 tower_pubkey: 

@@ -14,7 +14,6 @@
     credentials:
       - "{{ my_machine_creds }}"
     state: present
-    tower_config_file: "{{ my_tower_config_file }}"
     become_enabled: yes
 
 - name: Create SSH Hardening job template
@@ -28,7 +27,6 @@
     credentials:
       - "{{ my_machine_key_creds }}"
     state: present
-    tower_config_file: "{{ my_tower_config_file }}"
     become_enabled: yes
 
 - name: Create Attach Hosts job template
@@ -43,7 +41,6 @@
       - "{{ my_machine_key_creds }}"
       - "{{ my_subscription_creds }}"
     state: present
-    tower_config_file: "{{ my_tower_config_file }}"
     become_enabled: yes
 
 - name: Create Deploy HTTPD job template
@@ -57,7 +54,6 @@
     credentials:
       - "{{ my_machine_key_creds }}"
     state: present
-    tower_config_file: "{{ my_tower_config_file }}"
     become_enabled: yes
 
 - name: Create Install MSSQL job template
@@ -74,7 +70,6 @@
     credentials:
       - "{{ my_machine_key_creds }}"
     state: present
-    tower_config_file: "{{ my_tower_config_file }}"
     become_enabled: yes
     
 - name: Create Detach Hosts job template
@@ -89,5 +84,4 @@
       - "{{ my_machine_key_creds }}"
       - "{{ my_subscription_creds }}"
     state: present
-    tower_config_file: "{{ my_tower_config_file }}"
     become_enabled: yes

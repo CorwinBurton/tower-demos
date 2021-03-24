@@ -8,11 +8,12 @@
     state: present
 
 - name: Add Subscription Creds
-  awx.awx.tower_credential_type:
+  awx.awx.tower_credential:
     name: "{{ my_subscription_creds }}"
     description: RH Access Portal Credentials
     organization: "Default"
     state: present
+    credential_type: "RH Access Portal"
     inputs:
       password: "{{ my_rh_password }}"
       pool_id: "{{ my_pool_id }}"

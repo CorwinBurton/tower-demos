@@ -1,2 +1,26 @@
 ---
 # tasks file for tower-canned
+- name: Setup Credentials
+  include: cred-setup.yml
+  tags:
+    - creds
+
+- name: Setup Projects
+  include: project-setup.yml
+  tags:
+    - projects
+
+- name: Setup Inventory
+  include: inventory-setup.yml
+  tags:
+    - inventory
+
+- name: Setup Job Templates
+  include: job-templates-setup.yml
+  tags:
+    - jobs
+
+- name: Setup Workflow
+  include: workflow-setup.yml
+  tags:
+    - workflow

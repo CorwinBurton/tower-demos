@@ -20,6 +20,7 @@ my_subscription_creds:
 my_git_creds: 
 my_scm_demo_url: 
 my_scm_inventory_url: 
+my_mssql_password: 
 my_default_user: 
 my_default_password: 
 

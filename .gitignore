@@ -1,3 +1,4 @@
 local_inventory/
 ansible.cfg
 vault.yml
+*tower_cli.cfg

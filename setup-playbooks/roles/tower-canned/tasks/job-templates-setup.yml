@@ -70,7 +70,7 @@
     playbook: "playbooks/rh-install-mssql.yml"
     limit: db
     extra_vars:
-      mssql_db_password: "password"
+      mssql_db_password: "{{ my_mssql_password }}"
     credentials:
       - "{{ my_machine_key_creds }}"
     state: present

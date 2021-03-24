@@ -1,0 +1,17 @@
+- name: check main inventory
+  awx.awx.tower_inventory:
+    name: "{{ my_inventory }}"
+    organization: "Default"
+    state: present
+
+- name: check inventory source from git
+  awx.awx.tower_inventory_source:
+      name: "{{ my_inventory }}"
+      inventory: "{{ my_inventory }}"
+      source: scm
+      source_project: "{{ my_inventory_project }}"
+      source_path: "{{ my_inventory_file }}"
+      update_on_project_update: yes
+      overwrite: yes
+      overwrite_vars: yes
+      state: present

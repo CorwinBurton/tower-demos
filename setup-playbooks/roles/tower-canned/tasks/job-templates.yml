@@ -1,0 +1,93 @@
+- name: Create RHEL8 Raw Setup job template
+  awx.awx.tower_job_template:
+    name: "01 RHEL Raw SEtup"
+    job_type: "run"
+    organization: "Default"
+    inventory: "{{ my_inventory }}"
+    project: "{{ my_project }}"
+    playbook: "playbooks/rh-raw-setup.yml"
+    job_tags: user-setup
+    extra_vars:
+      python_version: python36
+      ansible_username: ansible
+      ssh_pub_key: "{{ tower_pubkey }}"
+    credentials:
+      - "{{ my_machine_creds }}"
+    state: present
+    tower_config_file: "{{ my_tower_config_file }}"
+    become_enabled: yes
+
+- name: Create SSH Hardening job template
+  awx.awx.tower_job_template:
+    name: "02 SSH Hardening"
+    job_type: "run"
+    organization: "Default"
+    inventory: "{{ my_inventory }}"
+    project: "{{ my_project }}"
+    playbook: "playbooks/ssh-hardening.yml"
+    credentials:
+      - "{{ my_machine_key_creds }}"
+    state: present
+    tower_config_file: "{{ my_tower_config_file }}"
+    become_enabled: yes
+
+- name: Create Attach Hosts job template
+  awx.awx.tower_job_template:
+    name: "03 Attach RHEL"
+    job_type: "run"
+    organization: "Default"
+    inventory: "{{ my_inventory }}"
+    project: "{{ my_project }}"
+    playbook: "playbooks/rhn-attach.yml"
+    credentials:
+      - "{{ my_machine_key_creds }}"
+      - "{{ my_subscription_creds }}"
+    state: present
+    tower_config_file: "{{ my_tower_config_file }}"
+    become_enabled: yes
+
+- name: Create Deploy HTTPD job template
+  awx.awx.tower_job_template:
+    name: "04 Deploy HTTPD"
+    job_type: "run"
+    organization: "Default"
+    inventory: "{{ my_inventory }}"
+    project: "{{ my_project }}"
+    playbook: "playbooks/rh-deploy-httpd-role.yml"
+    credentials:
+      - "{{ my_machine_key_creds }}"
+    state: present
+    tower_config_file: "{{ my_tower_config_file }}"
+    become_enabled: yes
+
+- name: Create Install MSSQL job template
+  awx.awx.tower_job_template:
+    name: "05 Deploy MSSQL"
+    job_type: "run"
+    organization: "Default"
+    inventory: "{{ my_inventory }}"
+    project: "{{ my_project }}"
+    playbook: "playbooks/rh-install-mssql.yml"
+    limit: db
+    extra_vars:
+      mssql_db_password: "password"
+    credentials:
+      - "{{ my_machine_key_creds }}"
+    state: present
+    tower_config_file: "{{ my_tower_config_file }}"
+    become_enabled: yes
+    
+- name: Create Detach Hosts job template
+  awx.awx.tower_job_template:
+    name: "06 Detach RHEL"
+    job_type: "run"
+    organization: "Default"
+    inventory: "{{ my_inventory }}"
+    project: "{{ my_project }}"
+    playbook: "playbooks/rhn-detach.yml"
+    credentials:
+      - "{{ my_machine_key_creds }}"
+      - "{{ my_subscription_creds }}"
+    state: present
+    tower_config_file: "{{ my_tower_config_file }}"
+    become_enabled: yes

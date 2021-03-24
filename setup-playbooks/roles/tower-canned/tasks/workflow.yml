@@ -1,0 +1,62 @@
+- name: check workflow
+  awx.awx.tower_workflow_job_template:
+    name: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+
+- name: MSSQL Node
+  awx.awx.tower_workflow_job_template_node:
+    identifier: mssql-install
+    workflow: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+    unified_job_template: "05 Deploy MSSQL"
+
+- name: HTTPD Node
+  awx.awx.tower_workflow_job_template_node:
+    identifier: httpd-install
+    workflow: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+    unified_job_template: "04 Deploy HTTPD"
+
+- name: Attach Node
+  awx.awx.tower_workflow_job_template_node:
+    identifier: rhel-attach
+    workflow: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+    unified_job_template: "03 Attach RHEL"
+    success_nodes:
+      - httpd-install
+      - mssql-install
+
+- name: SSH Hardening Node
+  awx.awx.tower_workflow_job_template_node:
+    identifier: ssh-hardening
+    workflow: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+    unified_job_template: "02 SSH Hardening"
+    success_nodes:
+      - rhel-attach     
+
+- name: Inventory update node
+  awx.awx.tower_workflow_job_template_node:
+    identifier: inventory-update
+    workflow: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+    unified_job_template: "{{ my_inventory_project }}"
+    success_nodes:
+      - ssh-hardening
+
+- name: Project update node
+  awx.awx.tower_workflow_job_template_node:
+    identifier: project-update
+    workflow: "00 RHEL Pipeline"
+    organization: "Default"
+    state: present
+    unified_job_template: "{{ my_project }}"
+    success_nodes:
+      - inventory-update

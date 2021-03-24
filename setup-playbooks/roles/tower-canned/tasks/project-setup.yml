@@ -1,0 +1,25 @@
+- name: check main project
+  awx.awx.tower_project:
+    name: "{{ my_project }}"
+    organization: "Default"
+    state: present
+    scm_type: git
+    scm_credential: "{{ my_git_creds }}"
+    scm_url: "{{ my_scm_demo_url }}"
+    scm_clean: yes
+    scm_delete_on_update: yes
+    scm_update_on_launch: yes
+    scm_update_cache_timeout: 0
+
+- name: check inventory project
+  awx.awx.tower_project:
+    name: "{{ my_inventory_project }}"
+    organization: "Default"
+    state: present
+    scm_type: git
+    scm_credential: "{{ my_git_creds }}"
+    scm_url: "{{ my_scm_inventory_url }}"
+    scm_clean: yes
+    scm_delete_on_update: yes
+    scm_update_on_launch: yes
+    scm_update_cache_timeout: 0

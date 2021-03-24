@@ -1,2 +1,3 @@
 local_inventory/
 ansible.cfg
+vault.yml

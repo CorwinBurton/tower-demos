@@ -1,0 +1,7 @@
+{
+ "extra_vars": {
+  "rhn_password": "{{ password }}",
+  "rhn_pool_id": "{{ pool_id }}",
+  "rhn_username": "{{ username }}"
+ }
+}

@@ -1,0 +1,25 @@
+{
+  "fields": [
+   {
+    "id": "username",
+    "type": "string",
+    "label": "Subscription manager username"
+   },
+   {
+    "id": "password",
+    "type": "string",
+    "label": "Subscription manager password",
+    "secret": true
+   },
+   {
+    "id": "pool_id",
+    "type": "string",
+    "label": "Subscription Pool ID"
+   }
+  ],
+  "required": [
+   "username",
+   "password",
+   "pool_id"
+  ]
+ }

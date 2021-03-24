@@ -1,0 +1,41 @@
+- name: Create RH Access Portal Credential Type
+  awx.awx.tower_credential_type:
+    name: RH Access Portal
+    description: Credentials for RH Access
+    kind: cloud
+    inputs: "{{ lookup('file', 'rh_access_portal_input.json') }}"
+    injectors: "{{ lookup('file', 'rh_access_portal_injector.json') }}"
+    state: present
+
+- name: Add GitHub Credentials
+  awx.awx.tower_credential:
+    name: "{{ my_git_creds }}"
+    description: SSH Key for GitHub access
+    organization: "Default"
+    state: present
+    credential_type: "Source Control"
+    inputs:
+      username: git
+      ssh_key_data: "{{ tower_key }}"
+
+- name: Add RHEL Password
+  awx.awx.tower_credential:
+    name: "{{ my_machine_creds }}"
+    description: Password for RHEL host access
+    organization: "Default"
+    state: present
+    credential_type: "Machine"
+    inputs:
+      username: "{{ my_default_user }}"
+      password: "{{ my_default_password }}"            
+
+- name: Add RHEL SSH Key
+  awx.awx.tower_credential:
+    name: "{{ my_machine_key_creds }}"
+    description: SSH Key for RHEL host access
+    organization: "Default"
+    state: present
+    credential_type: "Machine"
+    inputs:
+      username: ansible
+      ssh_key_data: "{{ tower_key }}"

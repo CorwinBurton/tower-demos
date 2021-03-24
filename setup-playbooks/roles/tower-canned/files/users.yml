@@ -1,0 +1,7 @@
+users:
+  - username: jsmith
+    password: "password1"
+    email: jsmith@example.com
+    firstname: "John"
+    lastname: "Smith"
+  

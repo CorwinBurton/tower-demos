@@ -1,0 +1,29 @@
+- name: Create Jr Ops team
+  awx.awx.tower_team:
+    name: "Jr Ops"
+    description: "Junior Operations"
+    organization: "Default"
+    state: present
+
+- name: Create users
+  awx.awx.tower_user:
+    username: "{{ item.username }}"
+    password: "{{ item.password }}"
+    email: "{{ item.email }}"
+    first_name: "{{ item.firstname }}"
+    last_name: "{{ item.lastname }}"
+    state: present
+  loop: "{{ users }}"
+
+- name: Add users to "Jr Ops"
+  awx.awx.tower_role:
+    role: member
+    user: "{{ item.username }}"
+    target_team: "Jr Ops"
+  loop: "{{ users }}"
+
+- name: Add team to org role execute
+  awx.awx.tower_role:
+    role: execute
+    organization: "Default"
+    team: "Jr Ops"

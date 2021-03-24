@@ -24,3 +24,8 @@
   include: workflow-setup.yml
   tags:
     - workflow
+
+- name: Setup RBAC
+  include: rbac-setup.yml
+  tags:
+    - rbac

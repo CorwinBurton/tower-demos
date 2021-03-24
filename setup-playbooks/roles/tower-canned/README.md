@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Role to set up a proscriptive Ansible Tower/AWX demo.
 
 Requirements
 ------------
@@ -11,6 +11,7 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
+```
 my_project: 
 my_inventory_project: 
 my_machine_creds: 
@@ -32,6 +33,15 @@ tower_pubkey:
 
 my_tower_config_file: 
 my_inventory_file: 
+
+# list of users to add in users.yml
+users:
+  - username:
+    password:
+    email:
+    firstname:
+    lastname:
+```
 
 Dependencies
 ------------

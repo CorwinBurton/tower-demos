@@ -1,6 +1,0 @@
-[submodule "playbooks/roles/--force"]
-	path = playbooks/roles/--force
-	url = https://github.com/spetrosi/mssql.git
-[submodule "playbooks/roles/mssql"]
-	path = playbooks/roles/mssql
-	url = https://github.com/spetrosi/mssql.git

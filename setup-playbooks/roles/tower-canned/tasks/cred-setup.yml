@@ -19,10 +19,10 @@
       pool_id: "{{ my_pool_id }}"
       username: "{{ my_rh_username }}"
 
-- name: Add GitHub Credentials
+- name: Add Git Credentials
   awx.awx.tower_credential:
     name: "{{ my_git_creds }}"
-    description: SSH Key for GitHub access
+    description: SSH Key for Git access
     organization: "Default"
     state: present
     credential_type: "Source Control"

@@ -1,1 +1,4 @@
 
+[submodule "roles/mssql"]
+	path = roles/mssql
+	url = git@github.com:linux-system-roles/mssql.git

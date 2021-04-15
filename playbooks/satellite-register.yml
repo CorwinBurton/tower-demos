@@ -8,6 +8,7 @@
         name: "{{ katello_rpm_url }}"
         state: present
         validate_certs: no
+        disable_gpg_check: yes
         
     - name: Register and attach with an activation key
       redhat_subscription:

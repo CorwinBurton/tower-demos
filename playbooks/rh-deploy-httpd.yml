@@ -28,5 +28,5 @@
     
     - name: ensure sample index.html is installed
       copy:
-        src: index.html
+        src: files/index.html
         dest: /var/www/html/index.html

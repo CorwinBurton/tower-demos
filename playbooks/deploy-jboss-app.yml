@@ -15,7 +15,7 @@
         force: yes
     - name: Configure application
       template: 
-        src: application.properties.j2
+        src: files/application.properties.j2
         dest: "/opt/{{application_name}}/{{application_name}}.properties"
     - name: Configure systemd unit
       template:

@@ -2,6 +2,8 @@
 - name: Set up ec2 instance
   hosts: localhost
   gather_facts: false
+  collections:
+    - amazon.aws
 
   tasks:
     - name: Provision a test EC2 Instance

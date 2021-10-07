@@ -7,7 +7,7 @@
 
   tasks:
     - name: Provision a test EC2 Instance
-      amazon.aws.ec2:
+      ec2_instance:
         instance_type: t2.micro
         image: "{{ ami }}"
         count: 1

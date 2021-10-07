@@ -1,0 +1,16 @@
+---
+- name: Set up ec2 instance
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Provision a test EC2 Instance
+      amazon.aws.ec2:
+        instance_type: t2.micro
+        image: "{{ ami }}"
+        count: 1
+        region: "{{ ec2-region }}"
+        wait: yes
+        instance_tags:
+          user: "{{ user_tag }}"
+

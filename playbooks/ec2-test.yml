@@ -7,6 +7,7 @@
 
   tasks:
     - name: Provision a test EC2 Instance
+      delegate_to: localhost
       ec2_instance:
         instance_type: t2.micro
         image: "{{ ami }}"

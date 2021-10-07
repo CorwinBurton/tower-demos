@@ -11,7 +11,7 @@
         instance_type: t2.micro
         image: "{{ ami }}"
         count: 1
-        region: "{{ ec2-region }}"
+        region: "{{ ec2_region }}"
         wait: yes
         instance_tags:
           user: "{{ user_tag }}"
